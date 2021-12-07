@@ -126,7 +126,7 @@ export default function Home() {
         </div>
         <div className="containerbthome">
                <div className="btn5"> 
-        <a  onClick={e => {handleClick(e)}}>Refresh countries</a>
+        <a  onClick={e => {handleClick(e)}}>REFRESH COUNTRIES</a>
        </div>
        </div>
         </div>

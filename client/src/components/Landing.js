@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import video from '..//components//Earth.mp4';
+import '..//components//Landing.css';
+
+
 export default function LandingPage () {
  return (
     <div 
     className="landing-page">
-       <h1>Welcome to my country app</h1>
-         <p color='white'>This is a simple app that allows you to search for countries caracteristics and activities</p>
+       <h1>Welcome to my Country App</h1>
             <Link to="/home">
-                <button color='white' >Start</button>
+                <button className="radioactive" >Start</button>
             </Link>
    <video 
    autoPlay

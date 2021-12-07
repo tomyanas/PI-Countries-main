@@ -140,7 +140,7 @@ select {
   bottom: -5px;
   width:30px;
   height:10px;
-  background: #f00;
+  background: rgb(255, 255, 255);
   border-radius: 10px;
   transition: 0.5s;
   transition-delay: 0s;
@@ -181,9 +181,9 @@ select {
 .containerbthome .btn5:nth-child(1)::after
 {
   background: #008cff;
-  box-shadow: 0 0 5px #008cff,
-  0 0 1px #008cff,
-  0 0 10px #008cff,
-  0 0 5px #008cff;
+  box-shadow: 0 0 6px #008cff94,
+  0 0 1px #008cff13,
+  0 0 10px #008cff23,
+  0 0 5px #008cff13;
 }
  

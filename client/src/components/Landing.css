@@ -1,0 +1,27 @@
+.radioactive{
+    margin-top: 20%;
+    cursor: pointer;
+    --green: #1b84fd;
+    font-size: 15px;
+    padding: 0.7em 2.7em;
+    letter-spacing: 0.06em;
+    font-family: inherit;
+    border-radius: 0.6em;
+    transition: all 0.3s;
+    line-height: 1.4em;
+    border: 2px solid var(--green);
+    background: linear-gradient(to right, rgba(27, 163, 253, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 125, 253, 0.1) 100%);
+    color: var(--green);
+    box-shadow: inset 0 0 10px rgba(0, 162, 255, 0.4), 0 0 9px 3px rgba(27, 117, 253, 0.1);
+   }
+   
+   .radioactive:hover {
+    color: #82b4ff;
+    box-shadow: inset 0 0 10px rgba(27, 117, 253, 0.6), 0 0 9px 3px rgba(27, 117, 253, 0.2);
+   }
+   
+   .radioactive:active {
+    transform: scale(0.96);
+   }
+
+  
