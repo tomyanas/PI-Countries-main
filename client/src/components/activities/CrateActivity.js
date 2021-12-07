@@ -5,6 +5,8 @@ import { getCountries, postActivity } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
 import '..//activities//creatActivity.css';
 
+
+
 function validate(input){
     let errors = {};
     if(!input.name){
@@ -88,7 +90,6 @@ export default function CrateActivity(props) {
 
     const handleSubmit = e => {
         if (Object.keys(errors).length > 0) {
-            console.log(errors,"soy el error");
             alert("Please fill out all fields");
         } else {
         e.preventDefault();
@@ -151,7 +152,8 @@ return (
                     value={input.name}
                     onChange= {handdleChangeName}
                 />
-                {errors.name && (  <p className="error" style={{color:'red'}}>{errors.name}</p>)}
+                {errors.name && (  <p className="error" style={{color:'red'}}>{errors.name}</p>)} 
+               
             </div >
             <div className="form-group">
                 <label htmlFor="difficulty">Difficulty</label>
@@ -209,11 +211,15 @@ return (
                 <div className='boxflags'>
                  {country?.map(c => countriesList.map(country => {{if (country.name === c) {
                     return ( 
-                    <div >
-                        <img src={country.flag} alt={props.name} width='100px' height='50px'/>
-                        <p className='nameselcou'>{country.name}</p>
-                        <button onClick={e => handleOnClose(e)} value={country.name}>x</button>
-                    </div>
+                        <div className="flip1">
+                             <div className="front1" style={{backgroundImage:`url(${country.flag})` }} width='100px' height='50px'>
+                                {/* <img src={country.flag} alt={props.name} width='100px' height='50px'/>*/}
+                            </div>
+                                <div className="back1">
+                                 <p className='nameselcou'>{country.name}</p>
+                                 <button onClick={e => handleOnClose(e)} value={country.name}>close</button>
+                                </div>
+                         </div>
                     )
                  }}
                     }))}

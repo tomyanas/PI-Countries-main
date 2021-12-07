@@ -10,12 +10,10 @@ import '..//components//home.css';
 
 export default function Home() {
     const dispatch = useDispatch();
-    
     const countries = useSelector(state => state.countries); // {allCharacters}esto es lo mismo que hacer el mapStateToProps
     const activities = useSelector(state => state.activities);// use selector para obtener el state de redux de actividades
     const [orden, setOrden] = useState('');
     const [order2, setOrder2] = useState('');
-    const [order3, setOrder3] = useState('');
     const [currentPage, setCurrentPage] = useState(1); // le paso la pagina actual y cual va a  ser la pagina actual
     const [countriesPerPage, setcountriesPerPage] = useState(9);//aca seleccionamos la cantidad de paises que queremos mostrar por pagina
     const indexOfLastCountry = currentPage * countriesPerPage; //{indexOflastCharacter}aca seleccionamos el ultimo pais que queremos mostrar , pagina actual * cantidad de paises por pagina
@@ -36,7 +34,7 @@ export default function Home() {
  }
 }
  
-//useEffect SIRVE PARA 
+//DISPATCH ---------------------------------------------------------------------->
 
     useEffect(() => { 
         dispatch(getActivites());
@@ -46,18 +44,22 @@ export default function Home() {
         dispatch(getCountries()); 
     }, [dispatch]);
 
-    
-    function handleClick(e) {
-        e.preventDefault();
-        dispatch(getCountries());
-    }
+//DISPATCH ---------------------------------------------------------------------->    
 
-    function handleFilterStatus(e) {
+
+//HANDLE CHANGE ---------------------------------------------------------------------->
+
+    function handleFilterActivities(e) {
+        e.preventDefault();
+        dispatch(filterCountriesByActivities(e.target.value));
+    }
+    
+    function handleFilterContinent(e) {
         e.preventDefault();
         dispatch(filterCountriesByContinent(e.target.value));
     }
 
-    function handleSort(e) {
+    function handleSortabc(e) {
         e.preventDefault();
         dispatch(filterCountriesByOrderAbc(e.target.value));
         setCurrentPage(1);
@@ -71,10 +73,12 @@ export default function Home() {
         setOrder2(`Ordenado ${e.target.value}`);
     }
 
-    function handleFilterActivities(e) {
+    function handleClick(e) {
         e.preventDefault();
-        dispatch(filterCountriesByActivities(e.target.value));
+        dispatch(getCountries());
     }
+
+    //HANDLE CHANGE ---------------------------------------------------------------------->
 
     return (
     <div> 
@@ -99,7 +103,7 @@ export default function Home() {
             </select>
             </div>
             <div className="select">
-        <select onChange= {e => handleFilterStatus(e)}>
+        <select onChange= {e => handleFilterContinent(e)}>
             <option value="All">Continent</option>
             <option value="North America">North America</option>
             <option value="South America">South America</option>
@@ -111,7 +115,7 @@ export default function Home() {
         </select>
         </div>
         <div className="select">
-        <select onChange= {e => handleSort(e)}>
+        <select onChange= {e => handleSortabc(e)}>
             <option value="asc">A - Z / Z  - A</option>
             <option value="asc">A - Z</option>
             <option value="desc">Z - A</option>
@@ -142,7 +146,7 @@ export default function Home() {
        
         {currentCountries?.map((country) => {
             //console.log(country.id)
-            if (!country){
+            if (country.length === 0) {
                 return <p>Loading...</p>
             } else {
             return ( 

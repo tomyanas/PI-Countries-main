@@ -7,9 +7,7 @@ export default function FlagCard(props) {
              
         <div className="flip">
             <div className="front" style={{backgroundImage:`url(${props.flag})`}} >
-                <div className="flag-box-name">
-            {/* <img src={props.flag} alt={props.name} width='280px' height='180px'/> */}
-               </div>
+    
             </div>
             <div className="back">
             <Link to={`/home/${props.id}`}  style={{ textDecoration: 'none' }}> 
