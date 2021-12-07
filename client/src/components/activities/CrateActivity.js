@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCountries, postActivity } from "../../actions";
 import { useSelector, useDispatch } from "react-redux";
-
+import '..//activities//creatActivity.css';
 
 export default function CrateActivity(props) {
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function CrateActivity(props) {
     //console.log(input);
     //console.log(countriesList);
 
-    const handdleChange = e => {
+    const handdleChangeName = e => {
         setInput({
             ...input,
            name: e.target.value
@@ -66,7 +66,7 @@ export default function CrateActivity(props) {
 
  useEffect(() => {
     dispatch(getCountries());
-}, []); 
+}, [dispatch]); 
 
 const handleChangeCountry = (e) => {
     setInput({
@@ -76,12 +76,19 @@ const handleChangeCountry = (e) => {
     setCountry([...country, e.target.value]);
 }
 
+const handleOnClose = (e) => {
+    setCountry(country.filter(country => country !== e.target.value));
+    setInput({
+        ...input,
+        countries: country.filter(country => country !== e.target.value)
+    });
+}
 
 
 return (
     <div className="container">
         <Link to="/home"> Home </Link>
-        <h1>Create Activity</h1>
+        <h1>LETS CREATE AN ACTIVITY!</h1>
         <div>
 
         </div>
@@ -95,14 +102,15 @@ return (
                     type="text"
                     className="form-control"
                     id="name"
-                    placeholder="Name"
+                    placeholder="Activity name"
                     value={input.name}
-                    onChange= {handdleChange}
+                    onChange= {handdleChangeName}
                 />
             </div >
             <div className="form-group">
                 <label htmlFor="difficulty">Difficulty</label>
              <select onChange={e => handdleChangeDifficulty(e)}>
+             <option value="">Select difficulty</option>
                 <option value="Realy Easy">Realy Easy</option>
                 <option value="Easy">Easy</option>
                 <option value="meddium">meddium</option>
@@ -113,6 +121,7 @@ return (
             <div className="form-group">
                 <label htmlFor="duration">Duration</label>
                 <select onChange={e => handdleChangeDuration(e)}>
+                <option value="">Select duration</option>
                 <option value="15 min">15 min</option>
                 <option value="30 min">30 min</option>
                 <option value="1 hour">1 hour</option>
@@ -128,24 +137,24 @@ return (
              </select>
             </div>
             <div className="form-group">
-                <label htmlFor="season">Season</label>
+                {/* <label htmlFor="season">Season</label> */}
                 <select onChange={e => handdleChangeSeason(e)}>
                     <option value="">Select a season</option>
-                    <option value="spring">Spring</option>
-                    <option value="summer">Summer</option>
-                    <option value="autumn">Autumn</option>
-                    <option value="winter">Winter</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Autumn">Autumn</option>
+                    <option value="Winter">Winter</option>
                 </select>
             </div>
             <div className="form-group">
                 <label htmlFor="countries">Select a country</label>
                 <select onChange={e => handleChangeCountry(e)}>
-                    {countries.map(country => (
+                <option value="">Select a country</option>
+                    {countries.map(country => (                  
                         <option key={country.id} value={country.name}>
-                            {country.name }
+                            {country.name}
                          </option>
                     ))}
-
                 </select>
                 <div>
                  {country?.map(c => countriesList.map(country => {{if (country.name === c) {
@@ -153,6 +162,7 @@ return (
                     <div>
                         <h3>{country.name}</h3>
                         <img src={country.flag} alt={props.name} width='100px' height='50px'/>
+                        <button onClick={e => handleOnClose(e)} value={country.name}>x</button>
                         </div>
                     )
                  }}
@@ -160,13 +170,18 @@ return (
 
                  </div>       
             </div>
-            <button type="submit" className="btn btn-primary">
-                Submit
-            </button>
-
+            <>
+            <div className='containerbt'>
+            <div className="btn" type="submit" className="btn btn-primary">
+                <a className='submitActivity'>Submit</a>
+            </div>
+            </div>
+            </>
         </form>
     </div>
 );
 }
+
+
 
 

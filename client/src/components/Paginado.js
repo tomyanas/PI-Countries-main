@@ -1,5 +1,5 @@
 import React from "react";
-
+import'..//components//paginado.css';
 export default function Paginado(props ) {
 
 const pageNumbers = [];
@@ -10,12 +10,14 @@ const pageNumbers = [];
     return (
         <nav>
             <ul className="pagination">
+                <a  className="text" >page {">>>"} </a>
                 {pageNumbers &&
                  pageNumbers.map(number => (
-                
-                    <a onClick={() => props.paginate(number)} key={number}> {number} </a>
-                    
+                    <>
+                    <a  className="text" onClick={() => props.paginate(number)} key={number}> {number} </a>
+                    </>
                 ))}
+                <a  className="text" > {"<<<"} page </a>
             </ul>
         </nav>
     );

@@ -1,0 +1,189 @@
+
+  
+  
+  .separation {
+    padding: 0.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    margin: auto;
+    margin-top: 2%;
+    align-content: stretch;
+    box-shadow: 1px 1px 7px 8px rgb(0 0 0 / 54%);
+    background-color: #1c1b1b;
+    margin-bottom: 2%;
+    justify-content: space-between;
+}
+
+
+.createactivity{
+   margin-right: 20px;
+
+}
+
+.searchRefresh{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+select {
+    appearance:none;
+    outline:0;
+    border:0!important;
+    background: rgb(0, 0, 0);
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color:rgb(255, 255, 255);
+    cursor:pointer;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+ }
+ select::-ms-expand {
+    display: none;
+ }
+ .select {
+    padding: 3px 3px;
+    border: rgb(107 107 107 / 98%) 0.05px solid;
+    margin-right: 20px;
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: rgb(24 23 23);
+    overflow: hidden;
+    border-radius: .25em;
+ }
+ .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #0f1f1f;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+ }
+ .select:hover::after {
+    color:#008cff;
+ }
+
+
+
+.containerbthome .btn5 {
+  cursor:pointer;
+  position:relative;
+  width: 155px;
+  height: 55px;
+  margin-right: 20px;
+}
+
+.containerbthome .btn5 a
+{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 1;
+  font-size: 400;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
+  
+}
+
+.containerbthome .btn5:hover a
+{
+  letter-spacing: 3px;
+}
+
+.containerbthome .btn5 a::before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255,255,255,0.15),
+  transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.containerbthome .btn5:hover a::before
+{
+  transform: skewX(45deg) translateX(200%);
+}
+.containerbthome .btn5::before
+{
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width:30px;
+  height:10px;
+  background: #f00;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+.containerbthome .btn5:hover::before
+{
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.containerbthome .btn5::after
+{
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  width:30px;
+  height:10px;
+  background: #f00;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+.containerbthome .btn5:hover::after
+{
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.containerbthome .btn5:nth-child(1)::before,
+.containerbthome .btn5:nth-child(1)::after
+{
+  background: #008cff;
+  box-shadow: 0 0 5px #008cff,
+  0 0 1px #008cff,
+  0 0 10px #008cff,
+  0 0 5px #008cff;
+}
+ 

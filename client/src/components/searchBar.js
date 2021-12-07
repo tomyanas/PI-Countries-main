@@ -1,11 +1,18 @@
 import React from "react";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import {getNameCountry} from "..//actions//index";
+import '..//components///searchbar.css';
+
 
 export default function SearchBar() {
 const dispatch = useDispatch();
 const [name, setName] = useState("");
+
+
+      useEffect(() => {
+        dispatch(getNameCountry(name));
+     }, [name]); 
 
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -27,20 +34,22 @@ const [name, setName] = useState("");
     }
 
 return (
-    <div className="search-bar">
+    <div className='searchbox'>
         <input
+            className="search-bar"
             type="text"
-            placeholder="Search for a country"  
+            placeholder="Search Country"  
             onChange={(e) => handleInputChange(e)} 
             value={name}
             onKeyDown={handleKeyPress}
             />
-        <button
+        <a
+            className="search-button"
         type="submit"
         onClick={(e) => handleSubmit(e)}   
         >
-            Search
-        </button>
+            Go!
+        </a>
     </div>
 );
 }

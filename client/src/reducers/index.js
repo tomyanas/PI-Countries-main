@@ -2,6 +2,7 @@ const initialState = {
     countries : [],
     allCountries: [],
     activities: [],
+    details: [],
 }
 
 function rootReducer (state=initialState, action) {
@@ -35,25 +36,51 @@ function rootReducer (state=initialState, action) {
                     ...state,
                     countries: sortedArr2,
                 }
+                case 'FILTER_COUNTRIES_BY_AREA':
+                    const sortedArr3 = action.payload === "pAsc" ?
+                    state.countries.sort((a, b) => a.area - b.area) : 
+                    state.countries.sort((a, b) => b.area - a.area);
+                    return {
+                        ...state,
+                        countries: sortedArr3,
+                    }
             case 'GET_ACTIVITIES':
                 return {
                     ...state,
                     activities: action.payload,
                 }
             case 'GET_NAME_COUNTRY' :
+                const chauNull = action.payload
                 return {
                     ...state,
-                    countries: action.payload,
+                    countries: chauNull
                 }
             case 'POST_ACTIVITY': 
             return {
                 ...state,
-            }              
+                }
+            case 'FILTER_COUNTRIES_BY_ACTIVITIES' :
+                const activitie2 = state.allCountries
+                const activitiesBycountry = state.activities.find(a => a.id == action.payload)
+                const render = action.payload === 'All' ? activitie2 : activitiesBycountry.countries
+                //const activityBackUp = activitiesBycountry.countries 
+                console.log(action.payload)
+                return {
+                    ...state,
+                    countries: render
+                }
+            case 'COUNTRY_DETAILS' :
+                return {
+                    ...state,
+                    details: action.payload
+                }
 
-        default:
-            return state
-    }
 
+
+                default:
+                    return state;
+                                 
+            }
 }
 
 export default rootReducer;

@@ -1,18 +1,21 @@
 import React from 'react';
 import { useState, Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getActivites, getCountries , filterCountriesByContinent, filterCountriesByOrderAbc, filterCountriesByOrderPoblatinal} from '../actions/index';
+import {filterCountriesByActivities, getActivites, getCountries , filterCountriesByContinent, filterCountriesByOrderAbc, filterCountriesByOrderPoblatinal} from '../actions/index';
 import {Link} from 'react-router-dom';
 import FlagCard from './Flags/FlagCard';
 import Paginado from './Paginado'; 
 import SearchBar from '..//components//searchBar';
+import '..//components//home.css';
 
 export default function Home() {
     const dispatch = useDispatch();
+    
     const countries = useSelector(state => state.countries); // {allCharacters}esto es lo mismo que hacer el mapStateToProps
     const activities = useSelector(state => state.activities);// use selector para obtener el state de redux de actividades
     const [orden, setOrden] = useState('');
     const [order2, setOrder2] = useState('');
+    const [order3, setOrder3] = useState('');
     const [currentPage, setCurrentPage] = useState(1); // le paso la pagina actual y cual va a  ser la pagina actual
     const [countriesPerPage, setcountriesPerPage] = useState(9);//aca seleccionamos la cantidad de paises que queremos mostrar por pagina
     const indexOfLastCountry = currentPage * countriesPerPage; //{indexOflastCharacter}aca seleccionamos el ultimo pais que queremos mostrar , pagina actual * cantidad de paises por pagina
@@ -32,14 +35,15 @@ export default function Home() {
    } 
  }
 }
+ 
+//useEffect SIRVE PARA 
 
-
-    useEffect(() => { //------------------useEffect para obtener las actividades
+    useEffect(() => { 
         dispatch(getActivites());
-    }, []);
+    }, [dispatch]);
   
     useEffect(() => {
-        dispatch(getCountries()); // esto es lo mismo que hacer el mapDispatchToProps
+        dispatch(getCountries()); 
     }, [dispatch]);
 
     
@@ -67,17 +71,36 @@ export default function Home() {
         setOrder2(`Ordenado ${e.target.value}`);
     }
 
+    function handleFilterActivities(e) {
+        e.preventDefault();
+        dispatch(filterCountriesByActivities(e.target.value));
+    }
+
     return (
-        <div>
-            <Link to="/country">Countries</Link>
-            <h1>Full list of counties</h1>
-            <button onClick={e => {handleClick(e)}}>Get countries</button>
-        <div>
+    <div> 
+        <div className= "searchRefresh">
             <div>
               <SearchBar />
             </div>
+            </div>
+            <div className="separation">
+            <div className="containerbthome">
+               <div className="btn5"> 
+            <Link to="/activity"  style={{ textDecoration: 'none' }}><a className='submitActivity' style={{color:'white'}}>CREATE ACTIVITIE </a></Link>
+        
+            </div>
+                </div>
+            <div className="select"> 
+            <select onChange={e => handleFilterActivities(e)}> 
+                <option value='All'>Activity</option>
+                {activities.map(activity => (
+                    <option key={activity.id} value={activity.id}>{activity.name}</option>
+                    ))}
+            </select>
+            </div>
+            <div className="select">
         <select onChange= {e => handleFilterStatus(e)}>
-            <option value="All">All</option>
+            <option value="All">Continent</option>
             <option value="North America">North America</option>
             <option value="South America">South America</option>
             <option value="Europe">Europe</option>
@@ -86,29 +109,47 @@ export default function Home() {
             <option value="Oceania">Oceania</option>
            
         </select>
+        </div>
+        <div className="select">
         <select onChange= {e => handleSort(e)}>
-            <option value="asc">Ascendente A - Z</option>
-            <option value="desc">Descendente Z - A</option>
+            <option value="asc">A - Z / Z  - A</option>
+            <option value="asc">A - Z</option>
+            <option value="desc">Z - A</option>
         </select>
+        </div>
+        <div className="select">
         <select onChange= {e => handleSortPoblatinal(e)}>
-            <option value="pAsc">Poblacion ASC</option>
-            <option value="pDsc">Poblacion DESC</option>
+            <option value="asc">Poblation ASC/DESC</option>
+            <option value="pAsc">ASC</option>
+            <option value="pDsc">DESC</option>
         </select>
-
+        </div>
+        <div className="containerbthome">
+               <div className="btn5"> 
+        <a  onClick={e => {handleClick(e)}}>Refresh countries</a>
+       </div>
+       </div>
+        </div>
+        {/*  <div>
+            <h1  className="txt">Country list</h1>
+        </div>   */}
         <Paginado
         countriesPerPage={countriesPerPage}
         countries = {countries.length}
         paginate={paginate}
         />
-        </div>
+    
        
         {currentCountries?.map((country) => {
             //console.log(country.id)
-            return( 
-                <Fragment>
-                    <Link to={`/home/${country.id}`}>
+            if (!country){
+                return <p>Loading...</p>
+            } else {
+            return ( 
+                <>
             <FlagCard 
-            key={country.id} 
+            key={country.id}
+            id={country.id} 
             name={country.name} 
             population={country.population}
             region={country.subregion}
@@ -116,9 +157,9 @@ export default function Home() {
             flag={country.flag}
             continent={country.continent}
             />
-            </Link>
-            </Fragment>
-            )})}
+             
+            </>
+            )}})}
         </div>
         
 

@@ -33,8 +33,12 @@ res.send('activty successfully created');
 
 }
 async function getActivites(req, res, next) {
-    let act = await Activities.findAll()
-
+    let act = await Activities.findAll({
+        include: {
+            model: Country,
+            attributes: ['name', 'flag','continent','subregion' , 'area', 'population', 'capital','id' ] 
+        }
+    })
 	res.json(act)
 }
 
@@ -47,7 +51,7 @@ async function getActById(req, res, next) {
             }
         }
     })
-    console.log(countriesWithAct)
+    //console.log(countriesWithAct)
     res.json(countriesWithAct)
 }
 
