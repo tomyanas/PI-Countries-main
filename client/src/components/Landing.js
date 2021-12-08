@@ -1,10 +1,23 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch} from 'react-redux';
+import {getCountries} from '../actions/index';
 import { Link } from 'react-router-dom';
 import video from '..//components//Earth.mp4';
 import '..//components//Landing.css';
 
 
 export default function LandingPage () {
+
+
+
+const dispatch = useDispatch();
+
+useEffect(()=>{
+   dispatch (getCountries());
+},[dispatch])
+
+
  return (
     <div 
     className="landing-page">

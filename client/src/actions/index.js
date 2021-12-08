@@ -10,7 +10,7 @@ export function getCountries() {
   }
 }
 
- export function getActivites() {
+/*  export function getActivites() {
     return async function(dispatch) {
         var json = await axios.get('http://localhost:3001/api/activities');
         return dispatch({
@@ -18,7 +18,7 @@ export function getCountries() {
             payload: json.data
     });
   }
-}
+} */
 
 export function countryDetails(id) {
     return async function (dispatch) {
@@ -92,4 +92,13 @@ export function filterCountriesByArea(payload) {
 }
 
 
-
+export function getActivites () {
+    return function(dispatch) {
+        fetch("http://localhost:3001/api/activities")
+        .then(res => res.json())
+        .then(json => { dispatch({
+            type: 'GET_ACTIVITIES',
+            payload: json
+        })})
+    }
+}

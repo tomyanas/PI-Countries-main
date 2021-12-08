@@ -4,7 +4,6 @@ import LandingPage from './components/Landing';
 import Home from './components/Home';
 import  CreateActivity  from '..//src//components//activities//CrateActivity';
 import DetailCountry from './components/Flags/DetailCountry';
-import img from './//components//backmap.jpg';
 function App() {
   return (
     <BrowserRouter>

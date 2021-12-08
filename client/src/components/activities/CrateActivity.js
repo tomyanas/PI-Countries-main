@@ -12,6 +12,9 @@ function validate(input){
     if(!input.name){
         errors.name = "Name is required";
     }
+    if(input.name.length > 15){
+        errors.name = "Name must be less than 20 characters";
+    }
     if(!input.difficulty){
         errors.difficulty = "Difficulty is required";
     }
@@ -131,6 +134,7 @@ const handleOnClose = (e) => {
 }
 
 
+
 return (
     <div className="container">
         <Link to="/home"> Home </Link>
@@ -139,24 +143,25 @@ return (
 
         </div>
         <form onSubmit= {(e)=>handleSubmit(e)}>
-            <div>
-                
-            </div>
+            <div className='dividebytwo'>
             <div className="form-group">
                 <label htmlFor="name">Name</label>
+                
                 <input
                     type="text"
-                    className="form-control"
+                    className="nameact"
                     id="name"
                     placeholder="Activity name"
                     value={input.name}
                     onChange= {handdleChangeName}
                 />
+            
                 {errors.name && (  <p className="error" style={{color:'red'}}>{errors.name}</p>)} 
                
             </div >
             <div className="form-group">
                 <label htmlFor="difficulty">Difficulty</label>
+                <div className="selecttwo">
              <select onChange={e => handdleChangeDifficulty(e)}>
              <option>Select difficulty</option>
                 <option value="Realy Easy">Realy Easy</option>
@@ -165,10 +170,14 @@ return (
                 <option value="Hard">Hard</option>
                 <option value="Realy Hard">Realy Hard</option>
              </select>
+             </div>
                 {errors.difficulty && (  <p className="error" style={{color:'red'}}>{errors.difficulty}</p>)}
             </div>
+            </div>
+            <div className='dividebytwo'>
             <div className="form-group">
                 <label htmlFor="duration">Duration</label>
+                <div className="selecttwo">
                 <select onChange={e => handdleChangeDuration(e)}>
                 <option value="">Select duration</option>
                 <option value="15 min">15 min</option>
@@ -184,10 +193,12 @@ return (
                 <option value="8 hours">8 hours</option>
                 <option value="more than 8 hours">more than 8 hours</option>
              </select>
+             </div>
                 {errors.duration && (  <p className="error" style={{color:'red'}}>{errors.duration}</p>)}
             </div>
             <div className="form-group">
                  <label>Season</label> 
+                 <div className='selecttwo'>
                 <select onChange={e => handdleChangeSeason(e)}>
                     <option value="">Select a season</option>
                     <option value="Spring">Spring</option>
@@ -195,18 +206,22 @@ return (
                     <option value="Autumn">Autumn</option>
                     <option value="Winter">Winter</option>
                 </select>
+                </div>
                 {errors.season && (  <p className="error" style={{color:'red'}}>{errors.season}</p>)}
+            </div>
             </div>
             <div className="form-group">
                 <label htmlFor="countries">Select a country</label>
+                <div className='selectthree'>
                 <select onChange={e => handleChangeCountry(e)}>
                 <option value="">Select a country</option>
-                    {countries.map(country => (                  
+                    {countries.map(country => (
                         <option key={country.id} value={country.name}>
                             {country.name}
                          </option>
                     ))}
                 </select>
+                </div>
                 {errors.countries && (  <p className="error" style={{color:'red'}}>{errors.countries}</p>)}
                 <div className='boxflags'>
                  {country?.map(c => countriesList.map(country => {{if (country.name === c) {
@@ -228,7 +243,7 @@ return (
             </div>
             <>
             <div className='containerbt'>
-            <div className="btn" type="submit" className="btn btn-primary" onClick={e => handleSubmit(e)}>
+            <div type="submit" className="btn btn-primary" onClick={e => handleSubmit(e)}>
                 <a className='submitActivity' >Submit</a>
             </div>
             </div>

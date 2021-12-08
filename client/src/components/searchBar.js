@@ -12,7 +12,7 @@ const [name, setName] = useState("");
 
       useEffect(() => {
         dispatch(getNameCountry(name));
-     }, [name]); 
+     }, [name,dispatch]); 
 
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -32,7 +32,7 @@ const [name, setName] = useState("");
             setName("");
         }
     }
-
+    let url="";
 return (
     <div className='searchbox'>
         <input
@@ -44,7 +44,8 @@ return (
             onKeyDown={handleKeyPress}
             />
         <a
-            className="search-button"
+        href={url}
+        className="search-button"
         type="submit"
         onClick={(e) => handleSubmit(e)}   
         >

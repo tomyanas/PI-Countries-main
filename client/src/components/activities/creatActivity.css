@@ -1,19 +1,19 @@
 
 
 .container {
+  max-width: 720px;
   display: flex;
-    margin: auto;
-    margin-top: 2%;
-    padding: 3%;
-    width: 765px;
-    height: 90%;
-    border-radius: 15px;
-    box-shadow: 0px 0px 28px -1px rgb(0 0 0 / 54%);
-    background-color: #161616;
-    margin-bottom: 5%;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: nowrap;
+  margin: auto;
+  margin-top: 2%;
+  padding: 3%;
+  width: 70%;
+  height: 90%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 28px -1px rgb(0 0 0 / 54%);
+  background-color: #161616;
+  margin-bottom: 5%;
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -156,7 +156,8 @@
 
 
 .form-group{
-  margin-bottom: 5%;
+  display: flex;
+    flex-direction: column;
 }
 .nameselcou{
   font-size: 0.6em;
@@ -207,19 +208,19 @@
   display: inline-flex;
   margin-right: 20px;
   margin-bottom: 1em;
-  width: 350px;
+  width: 118px;
+  padding: initial;
 }
 
 
 .flip1 > .front1,
 .flip1 > .back1 {
-  display: block;
+  display: block; 
   color: white;
   width: inherit;
   background-size: cover !important;
   background-position: center !important;
   height: 69px;
-  width: 35%;
   padding: 1em 2em;
   background: #313131;
   border-radius: 10px;
@@ -232,7 +233,75 @@
     margin-top: -10px;
 }
 
+.dividebytwo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
 
 
+.selecttwo {
+  padding: 3px 3px;
+  border: rgb(107 107 107 / 98%) 0.05px solid;
+  margin-right: 20px;
+  position: relative;
+  display: flex;
+  width: 15em;
+  height: 3em;
+  line-height: 3;
+  background: rgb(24 23 23);
+  overflow: hidden;
+  border-radius: .25em;
+}
+.selecttwo::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #0f1f1f;
+  cursor:pointer;
+  pointer-events:none;
+  transition:.25s all ease;
+}
+.selecttwo:hover::after {
+  color:#008cff;
+}
 
-  
+ 
+.selectthree {
+  padding: 3px 3px;
+  border: rgb(107 107 107 / 98%) 0.05px solid;
+  margin-right: 18px;
+  margin-left: 20px;
+  position: relative;
+  display: flex;
+  width: 34em;
+  height: 3em;
+  line-height: 3;
+  background: rgb(24 23 23);
+  overflow: hidden;
+  border-radius: 0.25em;
+}
+.selectthree::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #0f1f1f;
+  cursor:pointer;
+  pointer-events:none;
+  transition:.25s all ease;
+}
+.selectthree:hover::after {
+  color:#008cff;
+} 
+
+.nameact{
+  height: 48px;
+  background-color: black;
+  width: 234px;
+}

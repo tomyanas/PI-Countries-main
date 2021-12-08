@@ -21,6 +21,7 @@ export default function Home() {
     const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);  // {currentCharacters} aca seleccionamos los paises que queremos mostrar en la pagina actual
 
  const paginate = pageNumber => {
+     
      setCurrentPage(pageNumber);
     if (pageNumber === 1) {
         setcountriesPerPage(9);
@@ -39,10 +40,12 @@ export default function Home() {
     useEffect(() => { 
         dispatch(getActivites());
     }, [dispatch]);
-  
-    useEffect(() => {
-        dispatch(getCountries()); 
+
+
+    useEffect(() => {  
+      dispatch(getCountries()); 
     }, [dispatch]);
+    
 
 //DISPATCH ---------------------------------------------------------------------->    
 
@@ -50,11 +53,13 @@ export default function Home() {
 //HANDLE CHANGE ---------------------------------------------------------------------->
 
     function handleFilterActivities(e) {
+        setCurrentPage(1);
         e.preventDefault();
         dispatch(filterCountriesByActivities(e.target.value));
     }
     
     function handleFilterContinent(e) {
+        setCurrentPage(1);
         e.preventDefault();
         dispatch(filterCountriesByContinent(e.target.value));
     }
@@ -77,9 +82,9 @@ export default function Home() {
         e.preventDefault();
         dispatch(getCountries());
     }
-
+    let url="";
     //HANDLE CHANGE ---------------------------------------------------------------------->
-
+    
     return (
     <div> 
         <div className= "searchRefresh">
@@ -90,7 +95,7 @@ export default function Home() {
             <div className="separation">
             <div className="containerbthome">
                <div className="btn5"> 
-            <Link to="/activity"  style={{ textDecoration: 'none' }}><a className='submitActivity' style={{color:'white'}}>CREATE ACTIVITIE </a></Link>
+            <Link to="/activity"  style={{ textDecoration: 'none' }}><a href={url} className='submitActivity' style={{color:'white'}}>CREATE ACTIVITIE </a></Link>
         
             </div>
                 </div>
@@ -130,13 +135,11 @@ export default function Home() {
         </div>
         <div className="containerbthome">
                <div className="btn5"> 
-        <a  onClick={e => {handleClick(e)}}>REFRESH COUNTRIES</a>
+        <a href={url} onClick={e => {handleClick(e)}}>REFRESH COUNTRIES</a>
        </div>
        </div>
         </div>
-        {/*  <div>
-            <h1  className="txt">Country list</h1>
-        </div>   */}
+       
         <Paginado
         countriesPerPage={countriesPerPage}
         countries = {countries.length}
@@ -144,11 +147,10 @@ export default function Home() {
         />
     
        
-        {currentCountries?.map((country) => {
+        {
+        
+        currentCountries?.map((country) => {
             //console.log(country.id)
-            if (country.length === 0) {
-                return <p>Loading...</p>
-            } else {
             return ( 
                 <>
             <FlagCard 
@@ -163,7 +165,7 @@ export default function Home() {
             />
              
             </>
-            )}})}
+            )})}
         </div>
         
 
