@@ -5,7 +5,7 @@
   display: flex;
   margin: auto;
   margin-top: 2%;
-  padding: 3%;
+  padding: 2%;
   width: 70%;
   height: 90%;
   border-radius: 15px;
@@ -33,8 +33,9 @@
   margin:20px;
 }
 
-.containerbt .btn a
+.containerbt .btn span
 {
+  cursor: pointer;
   position:absolute;
   top:0;
   left:0;
@@ -60,12 +61,12 @@
   
 }
 
-.containerbt .btn:hover a
+.containerbt .btn:hover span
 {
   letter-spacing: 3px;
 }
 
-.containerbt .btn a::before
+.containerbt .btn span::before
 {
   content: '';
   position: absolute;
@@ -133,20 +134,16 @@
 .containerbt .btn:nth-child(1)::after
 {
   background: #008cff;
-  box-shadow: 0 0 5px #008cff,
-  0 0 15px #008cff,
-  0 0 30px #008cff,
-  0 0 60px #008cff;
+  box-shadow: 0 0 7px #008cff, 0 0 1px #008cff, 0 0 6px #008cff, 0 0 60px #008cff;
 }
 
 .boxflags{
-  box-shadow: inset 2px -3px 23px 3px rgb(0 0 0);
   display: flex;
   box-shadow: inset 2px -3px 23px 3px rgb(0 0 0);
   padding: 2%;
   margin-top: 5%;
   margin-bottom: 5%;
-  max-width: 100%;
+  max-width: 558px;
   height: 218px;
   flex-wrap: wrap;
   flex-direction: row;
@@ -156,8 +153,10 @@
 
 
 .form-group{
-  display: flex;
+  margin-right: 20px;
+    display: flex;
     flex-direction: column;
+    margin-left: 43px;
 }
 .nameselcou{
   font-size: 0.6em;
@@ -237,7 +236,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 5%;
   margin-bottom: 5%;
 }
 
@@ -272,13 +270,12 @@
 
  
 .selectthree {
-  padding: 3px 3px;
+  padding: 9px 3px;
   border: rgb(107 107 107 / 98%) 0.05px solid;
-  margin-right: 18px;
-  margin-left: 20px;
+  margin-left: 2px;
   position: relative;
   display: flex;
-  width: 34em;
+  width: 35em;
   height: 3em;
   line-height: 3;
   background: rgb(24 23 23);
@@ -301,7 +298,73 @@
 } 
 
 .nameact{
+  color: #fff;
+  padding: 0 0.5em;
   height: 48px;
   background-color: black;
   width: 234px;
 }
+
+.nameact::placeholder {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
+}
+
+input:-webkit-autofill {
+  color: white;
+  font-weight: normal;
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-box-shadow:0 0 0 50px black inset; /* aqui muda sua cor do fundo */
+  -webkit-text-fill-color: #ccc; /* Cor do texto */
+}
+
+/* ...................................................... */
+ .button {
+  display: flex;
+  width: 107px;
+  height: 40px;
+  background: #2b2b2b;
+  position: relative;
+  background: #191818;
+  margin-bottom: 0px;
+  border-radius: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+ .button span {
+  line-height: 100px;
+  font-size: 20px;
+  font-weight: semibold;
+}
+ .button {
+  box-shadow: 0px -1px 10px rgb(0 136 248 / 97%), 1px -1px 10px rgb(0 0 0 / 20%);
+  color: #ffffff;
+}
+ .button:hover {
+  opacity: 0.5;
+  box-shadow: -1px 0px 10px rgb(0 136 248), 20px 12px 10px rgb(0 0 0 / 12%);
+}
+ .button:active {
+  opacity: 1;
+  box-shadow: inset -4px -4px 8px rgba(36, 36, 36, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+
+.removebutton{
+  font-family: 'Open Sans', sans-serif;
+    border-radius: 7px;
+    text-align: center;
+    padding: 1px;
+    background: #ff0000ba;
+    box-shadow: 0px -1px 9px rgb(248 0 0 / 97%), 1px -1px 4px rgb(0 0 0 / 20%);
+    color: black;
+  
+}
+

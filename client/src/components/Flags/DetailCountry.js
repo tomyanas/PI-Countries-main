@@ -24,7 +24,7 @@ const myCountry =  useSelector(state => state.details);
                 <p>continent: {myCountry[0].continent}</p> 
                 <p>Subregion: {myCountry[0].subregion}</p> 
                 <p>Population: {myCountry[0].population}</p>
-                <p>area: {myCountry[0].area}</p> 
+                <p>area: {myCountry[0].area} km2</p> 
                    {myCountry[0].activities?.map((c)=>
                    <>
                    <p>Activity name: {c.name}</p>

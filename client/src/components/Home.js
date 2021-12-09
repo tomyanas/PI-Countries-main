@@ -14,14 +14,13 @@ export default function Home() {
     const activities = useSelector(state => state.activities);// use selector para obtener el state de redux de actividades
     const [orden, setOrden] = useState('');
     const [order2, setOrder2] = useState('');
-    const [currentPage, setCurrentPage] = useState(1); // le paso la pagina actual y cual va a  ser la pagina actual
-    const [countriesPerPage, setcountriesPerPage] = useState(9);//aca seleccionamos la cantidad de paises que queremos mostrar por pagina
-    const indexOfLastCountry = currentPage * countriesPerPage; //{indexOflastCharacter}aca seleccionamos el ultimo pais que queremos mostrar , pagina actual * cantidad de paises por pagina
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; //{indexOfFirstCharacter}aca seleccionamos el primer pais que queremos mostrar , ultimo pais - cantidad de paises por pagina     
-    const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);  // {currentCharacters} aca seleccionamos los paises que queremos mostrar en la pagina actual
+    const [currentPage, setCurrentPage] = useState(1); // pagina actual
+    const [countriesPerPage, setcountriesPerPage] = useState(10);//paises por pagina
+    const indexOfLastCountry = currentPage * countriesPerPage; //multiplicar la pagina actual por los paises por pagina y me da el indice ultimo pais 1*10=10, 2*10=20, 3*10=30
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // si resto el indice del ultimo pais por la cantidad de paises por pagina me da el indice del primer pais 10-10=0, 20-10=10, 30-10=20  
+    const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);  // con el slice pasandole el indice del primer pais y el indice del ultimo pais me da los paises de la pagina actual 
 
  const paginate = pageNumber => {
-     
      setCurrentPage(pageNumber);
     if (pageNumber === 1) {
         setcountriesPerPage(9);
@@ -82,7 +81,7 @@ export default function Home() {
         e.preventDefault();
         dispatch(getCountries());
     }
-    let url="";
+    
     //HANDLE CHANGE ---------------------------------------------------------------------->
     
     return (
@@ -95,8 +94,7 @@ export default function Home() {
             <div className="separation">
             <div className="containerbthome">
                <div className="btn5"> 
-            <Link to="/activity"  style={{ textDecoration: 'none' }}><a href={url} className='submitActivity' style={{color:'white'}}>CREATE ACTIVITIE </a></Link>
-        
+            <Link to="/activity"  style={{ textDecoration: 'none' }}><span  className='submitActivity' style={{color:'white'}}>CREATE ACTIVITIE </span></Link>
             </div>
                 </div>
             <div className="select"> 
@@ -133,9 +131,10 @@ export default function Home() {
             <option value="pDsc">DESC</option>
         </select>
         </div>
+     
         <div className="containerbthome">
                <div className="btn5"> 
-        <a href={url} onClick={e => {handleClick(e)}}>REFRESH COUNTRIES</a>
+        <span  onClick={e => {handleClick(e)}}>REFRESH COUNTRIES</span>
        </div>
        </div>
         </div>

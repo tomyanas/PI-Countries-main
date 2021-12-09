@@ -36,24 +36,17 @@ function rootReducer (state=initialState, action) {
                     ...state,
                     countries: sortedArr2,
                 }
-                case 'FILTER_COUNTRIES_BY_AREA':
-                    const sortedArr3 = action.payload === "pAsc" ?
-                    state.countries.sort((a, b) => a.area - b.area) : 
-                    state.countries.sort((a, b) => b.area - a.area);
-                    return {
-                        ...state,
-                        countries: sortedArr3,
-                    }
+         
             case 'GET_ACTIVITIES':
                 return {
                     ...state,
                     activities: action.payload,
                 }
             case 'GET_NAME_COUNTRY' :
-                const chauNull = action.payload
+               
                 return {
                     ...state,
-                    countries: chauNull
+                    countries:  action.payload
                 }
             case 'POST_ACTIVITY': 
             return {

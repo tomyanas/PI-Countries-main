@@ -4,6 +4,7 @@ import LandingPage from './components/Landing';
 import Home from './components/Home';
 import  CreateActivity  from '..//src//components//activities//CrateActivity';
 import DetailCountry from './components/Flags/DetailCountry';
+import About from './components/About';
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home/>} />
         <Route path="/activity" element={<CreateActivity/>} />
         <Route path="/home/:id" element={<DetailCountry/>} />
+        <Route path="/about" element={<About/>} />
       </Routes>
     </div>
     </div>

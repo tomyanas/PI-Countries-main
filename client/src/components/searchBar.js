@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import { useDispatch } from "react-redux";
 import {getNameCountry} from "..//actions//index";
 import '..//components///searchbar.css';
+import { Link } from "react-router-dom";
 
 
 export default function SearchBar() {
@@ -12,7 +13,7 @@ const [name, setName] = useState("");
 
       useEffect(() => {
         dispatch(getNameCountry(name));
-     }, [name,dispatch]); 
+     }, [name,dispatch]);  
 
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -32,9 +33,10 @@ const [name, setName] = useState("");
             setName("");
         }
     }
-    let url="";
+    
 return (
     <div className='searchbox'>
+        <Link to="/about" style={{ textDecoration: 'none' }}> <h5  className="search-button2">ABOUT</h5></Link>
         <input
             className="search-bar"
             type="text"
@@ -43,14 +45,13 @@ return (
             value={name}
             onKeyDown={handleKeyPress}
             />
-        <a
-        href={url}
+        <h5
         className="search-button"
         type="submit"
         onClick={(e) => handleSubmit(e)}   
         >
-            Go!
-        </a>
+            GO!
+        </h5>
     </div>
 );
 }

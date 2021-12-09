@@ -22,14 +22,14 @@ const pageNumbers = [];
     return (
         <nav>
             <ul className="pagination">
-                <a className="text" >page {">>>"} </a>
+                <span className="text" >page {">>>"} </span>
                 {pageNumbers &&
                  pageNumbers.map(number => (
                     <>
-                    <a className="text" onClick={() => props.paginate(number)} key={number}> {number} </a>
+                    <span className="text" onClick={() => props.paginate(number)} key={number}> {number} </span>
                     </>
                 ))}
-                <a className="text" > {"<<<"} page </a>
+                <span className="text" > {"<<<"} page </span>
             </ul>
         </nav>
     );

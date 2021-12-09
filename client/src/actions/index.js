@@ -77,16 +77,10 @@ export function filterCountriesByOrderPoblatinal(payload) {
     }
 }
 
+
 export function filterCountriesByActivities(payload) {
     return {
         type: 'FILTER_COUNTRIES_BY_ACTIVITIES',
-        payload
-    }
-}
-
-export function filterCountriesByArea(payload) {
-    return {
-        type: 'FILTER_COUNTRIES_BY_AREA',
         payload
     }
 }

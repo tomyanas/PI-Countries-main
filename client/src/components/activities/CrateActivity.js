@@ -137,7 +137,9 @@ const handleOnClose = (e) => {
 
 return (
     <div className="container">
-        <Link to="/home"> Home </Link>
+        <Link to="/home"  style={{ textDecoration: 'none' }}>
+             <div class="button"><span>Go Home</span></div>
+        </Link>
         <h1>LETS CREATE AN ACTIVITY!</h1>
         <div>
 
@@ -163,7 +165,7 @@ return (
                 <label htmlFor="difficulty">Difficulty</label>
                 <div className="selecttwo">
              <select onChange={e => handdleChangeDifficulty(e)}>
-             <option>Select difficulty</option>
+             <option value="">Select difficulty</option>
                 <option value="Realy Easy">Realy Easy</option>
                 <option value="Easy">Easy</option>
                 <option value="meddium">meddium</option>
@@ -232,7 +234,7 @@ return (
                             </div>
                                 <div className="back1">
                                  <p className='nameselcou'>{country.name}</p>
-                                 <button onClick={e => handleOnClose(e)} value={country.name}>close</button>
+                                 <button onClick={e => handleOnClose(e)} value={country.name} className='removebutton' >Remove</button>
                                 </div>
                          </div>
                     )
@@ -244,7 +246,7 @@ return (
             <>
             <div className='containerbt'>
             <div type="submit" className="btn btn-primary" onClick={e => handleSubmit(e)}>
-                <a className='submitActivity' >Submit</a>
+                <span className='submitActivity' >Submit</span>
             </div>
             </div>
             </>

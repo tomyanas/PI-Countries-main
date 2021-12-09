@@ -7,7 +7,7 @@
     padding-right: 5%;
     display: flex;
     margin: auto;
-    margin-top: 2%;
+    margin-top: 1%;
     align-content: stretch;
     box-shadow: 1px 1px 7px 8px rgb(0 0 0 / 54%);
     background-color: #1c1b1b;
@@ -81,7 +81,7 @@ select {
   margin-right: 20px;
 }
 
-.containerbthome .btn5 a
+.containerbthome .btn5 span
 {
   position:absolute;
   top:0;
@@ -108,12 +108,12 @@ select {
   
 }
 
-.containerbthome .btn5:hover a
+.containerbthome .btn5:hover span
 {
   letter-spacing: 3px;
 }
 
-.containerbthome .btn5 a::before
+.containerbthome .btn5 span::before
 {
   content: '';
   position: absolute;
@@ -127,7 +127,7 @@ select {
   transition: 0.5s;
 }
 
-.containerbthome .btn5:hover a::before
+.containerbthome .btn5:hover span::before
 {
   transform: skewX(45deg) translateX(200%);
 }

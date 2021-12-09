@@ -12,7 +12,8 @@ const obtenerCountries = async  (req, res, next) => {
 
      //console.log(req.query.name)
 
-      if (!name) {  
+      if (!name) { 
+        
 
             const getApi = await axios.get("https://restcountries.com/v3/all")
            
