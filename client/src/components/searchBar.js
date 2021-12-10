@@ -1,9 +1,10 @@
 import React from "react";
 import {useState, useEffect} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {getNameCountry} from "..//actions//index";
 import '..//components///searchbar.css';
 import { Link } from "react-router-dom";
+
 
 
 export default function SearchBar() {
@@ -12,7 +13,9 @@ const [name, setName] = useState("");
 
 
       useEffect(() => {
-        dispatch(getNameCountry(name));
+          if (name.length > 0) { 
+        dispatch(getNameCountry(name))
+          }
      }, [name,dispatch]);  
 
     const handleInputChange = (e) => {

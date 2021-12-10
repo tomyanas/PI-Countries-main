@@ -138,7 +138,7 @@ const handleOnClose = (e) => {
 return (
     <div className="container">
         <Link to="/home"  style={{ textDecoration: 'none' }}>
-             <div class="button"><span>Go Home</span></div>
+             <div className="button"><span>Go Home</span></div>
         </Link>
         <h1>LETS CREATE AN ACTIVITY!</h1>
         <div>
@@ -229,10 +229,10 @@ return (
                  {country?.map(c => countriesList.map(country => {{if (country.name === c) {
                     return ( 
                         <div className="flip1">
-                             <div className="front1" style={{backgroundImage:`url(${country.flag})` }} width='100px' height='50px'>
+                             <div  className="front1" style={{backgroundImage:`url(${country.flag})` }} width='100px' height='50px'>
                                 {/* <img src={country.flag} alt={props.name} width='100px' height='50px'/>*/}
                             </div>
-                                <div className="back1">
+                                <div key={country.name} className="back1">
                                  <p className='nameselcou'>{country.name}</p>
                                  <button onClick={e => handleOnClose(e)} value={country.name} className='removebutton' >Remove</button>
                                 </div>

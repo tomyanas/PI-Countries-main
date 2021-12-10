@@ -17,7 +17,7 @@ const myCountry =  useSelector(state => state.details);
         <div className="container">
         {
             myCountry.length > 0 ?
-            <div className="row">
+            <div key={myCountry[0].name} className="row">
                 <h1>{myCountry[0].name}</h1>
                  <img src={myCountry[0].flag} width='300px' height='180px' alt= { myCountry[0].name}/>
                 <p>Capital: {myCountry[0].capital}</p>
@@ -26,12 +26,14 @@ const myCountry =  useSelector(state => state.details);
                 <p>Population: {myCountry[0].population}</p>
                 <p>area: {myCountry[0].area} km2</p> 
                    {myCountry[0].activities?.map((c)=>
-                   <>
+
+                   <div key={c}>
+
                    <p>Activity name: {c.name}</p>
                    <p>Season: {c.season}</p>
                    <p>duration: {c.duration}</p>
                    <p>difficulty: {c.difficulty}</p>
-                    </>
+                    </div>
                    )} 
                  
             </div>

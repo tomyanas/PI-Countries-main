@@ -15,7 +15,7 @@ export default function Home() {
     const [orden, setOrden] = useState('');
     const [order2, setOrder2] = useState('');
     const [currentPage, setCurrentPage] = useState(1); // pagina actual
-    const [countriesPerPage, setcountriesPerPage] = useState(10);//paises por pagina
+    const [countriesPerPage, setcountriesPerPage] = useState(9);//paises por pagina
     const indexOfLastCountry = currentPage * countriesPerPage; //multiplicar la pagina actual por los paises por pagina y me da el indice ultimo pais 1*10=10, 2*10=20, 3*10=30
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // si resto el indice del ultimo pais por la cantidad de paises por pagina me da el indice del primer pais 10-10=0, 20-10=10, 30-10=20  
     const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);  // con el slice pasandole el indice del primer pais y el indice del ultimo pais me da los paises de la pagina actual 
@@ -24,15 +24,15 @@ export default function Home() {
      setCurrentPage(pageNumber);
     if (pageNumber === 1) {
         setcountriesPerPage(9);
-    }else if (pageNumber) {
-    for (let i = 2; i <= pageNumber; i++){
-        if (pageNumber === i) {
-            setcountriesPerPage(10);
+        console.log(countriesPerPage)
+    }else {setcountriesPerPage(10);}
+    
         
-    }   
-   } 
- }
-}
+    } 
+    
+  
+   
+ 
  
 //DISPATCH ---------------------------------------------------------------------->
 
@@ -151,7 +151,7 @@ export default function Home() {
         currentCountries?.map((country) => {
             //console.log(country.id)
             return ( 
-                <>
+                
             <FlagCard 
             key={country.id}
             id={country.id} 
@@ -162,8 +162,6 @@ export default function Home() {
             flag={country.flag}
             continent={country.continent}
             />
-             
-            </>
             )})}
         </div>
         

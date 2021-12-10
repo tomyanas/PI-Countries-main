@@ -4,7 +4,7 @@ export default function Paginado(props ) {
 
 const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(props.countries / props.countriesPerPage); i++) {
+    for (let i = 1; i <= Math.floor(props.countries / props.countriesPerPage); i++) {
         pageNumbers.push(i);
     }   
    
@@ -22,12 +22,12 @@ const pageNumbers = [];
     return (
         <nav>
             <ul className="pagination">
-                <span className="text" >page {">>>"} </span>
+                <span  className="text" >page {">>>"} </span>
                 {pageNumbers &&
                  pageNumbers.map(number => (
-                    <>
+                
                     <span className="text" onClick={() => props.paginate(number)} key={number}> {number} </span>
-                    </>
+                    
                 ))}
                 <span className="text" > {"<<<"} page </span>
             </ul>
